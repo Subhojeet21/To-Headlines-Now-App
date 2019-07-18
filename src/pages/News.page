@@ -1,0 +1,149 @@
+<apex:page controller="NewsController" showHeader="false" sidebar="false" action="{!onLoad}">
+    <head>
+        <apex:includeScript value="{!URLFOR($Resource.Easy, 'js/jquery-1.11.3.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.Easy, 'js/jquery.jpanelmenu.js')}"/>
+        <script>
+            	var jPM = $.jPanelMenu();
+            	jPM.on();
+            	jPM.trigger(true);
+            
+        		function getNewsHead(src){
+                    getNewsFromCtrl(src);
+                }
+        
+        		function loadingStart(){
+                	$(".jPanelMenu-panel").css('display', 'none');
+                    $(".loadingImage").css('display', 'block');
+                }
+        
+        		function loadingStop(){
+                	$(".jPanelMenu-panel").css('display', 'block');
+                    $(".loadingImage").css('display', 'none');
+                }
+        </script>
+        <apex:slds />
+        <style type="text/css">
+            
+            body .pbBody table.list tr td.indexColumnClass  {
+            color: #de0e0e; !important;
+            font-size: 2.75rem !important;
+            margin-left : 1rem;
+            }
+            
+            body .pbBody table.list tr td.linkColumnClass  {
+            color: #de0e0e; !important;
+            font-size: 1rem !important;
+            }
+            
+            #jPanelMenu-menu {
+                overflow-y:hidden !important;
+            }
+            #trigger { padding: 5px; cursor: pointer; background: #000; }
+            .jpanelMenu { list-style: none; padding: 0px;}
+            .jPanelMenu li a {
+                background: none repeat scroll 0 0 #000000;
+                line-height: 20px;
+                padding: 20px;
+                text-align: left;
+                display: block;
+                color:#FFF;
+            }
+            .jPanelMenu li a:hover {
+                background: none repeat scroll 0 0 #ccc;
+                text-decoration: none;
+                text-align: center;
+                color: #999;
+                cursor: pointer;
+                font-weight: bold;
+            }
+        </style>
+        
+    </head>
+    <body>
+    <apex:pageMessages />
+    
+    <nav id="jPanelMenu-menu" style="width: 250px;">
+        <section>
+            <h2 style="margin-top:10px;margin-bottom:10px; margin-left:20px;">General</h2>
+            <ul>
+                <li><apex:outputLink styleClass="menu-trigger TimesOfIndia">The Times Of India</apex:outputLink></li>
+                <li><apex:outputLink styleClass="menu-trigger Hindu" >The Hindu</apex:outputLink></li>
+                <li><apex:outputLink styleClass="menu-trigger Telegraph" >The Telegraph</apex:outputLink></li>
+                <li><apex:outputLink styleClass="menu-trigger GoogleNews" >Google News</apex:outputLink></li>
+            </ul>
+        </section>
+        <section>
+            <h2 style="margin-top:10px;margin-bottom:10px; margin-left:20px;">Sports</h2>
+            <ul>
+                <li><apex:outputLink styleClass="menu-trigger BBCSports">BBC Sports</apex:outputLink></li>
+                <li><apex:outputLink styleClass="menu-trigger ESPN" >ESPN</apex:outputLink></li>
+                <li><apex:outputLink styleClass="menu-trigger ESPNCricInfo" >ESPN Cric Info</apex:outputLink></li>
+            </ul>
+        </section>
+            
+    </nav>
+    <apex:form id="formId"> 
+        <apex:actionFunction name="getNewsFromCtrl" action="{!getNews}" status="myStatus" reRender="panelId">
+            <apex:param name="param1" value="" assignTo="{!newsSource}"/>
+        </apex:actionFunction>
+        
+        <apex:outputPanel id="panelId">
+            <apex:image styleClass="loadingImage" url="{!URLFOR($Resource.Easy, 'loading.gif')}" width="50" height="10" style="margin-left:40%; margin-top:20%; display:none;"/>
+            <div class="jPanelMenu-panel" >
+                <apex:outputLink value="#menu" styleClass="menu-trigger"><apex:image id="theImage" url="{!URLFOR($Resource.Easy, 'menu.png')}" width="30" height="10" style="margin-left:20px; margin-top:20px;"/></apex:outputLink>
+                <div id="bodyDiv" style="margin-left: 16px; margin-right: 16px; margin-top:20px;" >
+                    <h1 id="headerId" style="font-size: 1.5rem;"><span style="color: #de0e0e;">{!sourceName}</span> - Top Headlines</h1>
+                    <apex:actionStatus onstart="loadingStart();" onstop="loadingStop();" id="myStatus">
+                    </apex:actionStatus>
+                    <div style="margin-top:10px;">
+                        <apex:variable value="{!0}" var="index" />
+                        <apex:pageBlock id="blockId">
+                            <apex:pageBlockTable id="tableId" value="{!newsList.articles}" var="article" cellspacing="10px" columnClasses="indexColumnClass,linkColumnClass">
+                                <apex:column >
+                                    <apex:outputText >
+                                        <apex:variable value="{!index + 1}" var="index" />
+                                        <span style="padding-left:30%; padding-right:40%;">{!index}</span>
+                                    </apex:outputText>
+                                </apex:column>
+                                <apex:column style="padding-left: 5%; padding-right:5%;">
+                                    <apex:outputLink value="{!article.url}" id="theLink">{!article.title}</apex:outputLink>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlock>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+    </apex:form>
+    </body>
+    <script>
+    	$(".TimesOfIndia").on('mousedown touchstart click', function(e){
+            getNewsHead("TimesOfIndia");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".Hindu").on('mousedown touchstart click', function(){
+            getNewsHead("Hindu");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".Telegraph").on('mousedown touchstart click', function(){
+            getNewsHead("Telegraph");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".GoogleNews").on('mousedown touchstart click', function(){
+            getNewsHead("GoogleNews");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".BBCSports").on('mousedown touchstart click', function(){
+            getNewsHead("BBCSports");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".ESPN").on('mousedown touchstart click', function(){
+            getNewsHead("ESPN");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    	$(".ESPNCricInfo").on('mousedown touchstart click', function(){
+            getNewsHead("ESPNCricInfo");
+            $("#jPanelMenu-menu").css('display', 'none');
+         });
+    </script>
+</apex:page>
