@@ -1,5 +1,6 @@
 # To-Headlines-Now-App
 
+#Custom_Setting_Data
 
 "_"	"Id"	"Url__c"
 "[News_Endpoints__c]"	"a1o0I00000EJHjrQAH"	"https://newsapi.org/v2/top-headlines?sources=the-hindu&apiKey=7006ca6fc3a24435af121e53799b0ee1"
