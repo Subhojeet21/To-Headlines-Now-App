@@ -1,4 +1,4 @@
-# To-Headlines-Now-App
+# Top-Headlines-Now-App
 
 # Custom_Setting_Data
 
@@ -10,6 +10,7 @@
 "[News_Endpoints__c]"	"a1o0I00000EJHk1QAH"	"https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=7006ca6fc3a24435af121e53799b0ee1"
 "[News_Endpoints__c]"	"a1o0I00000EJHkBQAX"	"https://newsapi.org/v2/top-headlines?sources=espn&apiKey=7006ca6fc3a24435af121e53799b0ee1"
 "[News_Endpoints__c]"	"a1o0I00000EJHk6QAH"	"https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=7006ca6fc3a24435af121e53799b0ee1"
+"[News_Endpoints__c]"	"a1o0I000001ee4T"	"https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=7006ca6fc3a24435af121e53799b0ee1"
 
 
 "_"	"Id"	"url__c"
