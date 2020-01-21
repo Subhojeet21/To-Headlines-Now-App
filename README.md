@@ -15,3 +15,13 @@
 
 "_"	"Id"	"url__c"
 "[Endpoints__c]"	"a1l0I000008BJAzQAO"	"https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=7006ca6fc3a24435af121e53799b0ee1"
+
+
+# DEMO:
+<div align="center">
+  <a href="https://youtu.be/VufmFnwPwFs"><img src="https://img.youtube.com/vi/VufmFnwPwFs/0.jpg" alt="To Headlines Now"></a>
+</div>
+
+# More Details:
+
+https://techietips99.wordpress.com/2019/03/27/top-headlines-now-a-salesforce-hybrid-remote-app-get-the-top-headlines-from-different-news-websites/
