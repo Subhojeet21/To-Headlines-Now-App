@@ -91,6 +91,11 @@
             <apex:image styleClass="loadingImage" url="{!URLFOR($Resource.Easy, 'loading.gif')}" width="50" height="10" style="margin-left:40%; margin-top:20%; display:none;"/>
             <div class="jPanelMenu-panel" >
                 <apex:outputLink value="#menu" styleClass="menu-trigger"><apex:image id="theImage" url="{!URLFOR($Resource.Easy, 'menu.png')}" width="30" height="10" style="margin-left:20px; margin-top:20px;"/></apex:outputLink>
+                <apex:outputLink value="https://www.youtube.com/watch?v=VufmFnwPwFs&t=19s" style="float:right;">
+                    <span class="slds-icon_container null slds-icon__svg--default" style="margin-right:20px; margin-top:20px;" title="Demo">
+                        <svg aria-hidden="true" class="slds-icon slds-icon-text-default"><use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#video" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg>
+                    </span>
+                </apex:outputLink>
                 <div id="bodyDiv" style="margin-left: 16px; margin-right: 16px; margin-top:20px;" >
                     <h1 id="headerId" style="font-size: 1.5rem;"><span style="color: #de0e0e;">{!sourceName}</span> - Top Headlines</h1>
                     <apex:actionStatus onstart="loadingStart();" onstop="loadingStop();" id="myStatus">
